@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+import os
 
 URL = "https://karurcinemas.com/"
 MOVIE = "Jana Nayagan"
 
-BOT_TOKEN = "8413025462:AAG00S2gQzWQ_RuWDbWzFLfrqQOzHayoB1I"
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = "7447216774"
 
 def send_alert(msg):
