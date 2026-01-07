@@ -1,8 +1,10 @@
 name: Jana Nayagan Booking Alert
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"   # every 5 minutes
+    - cron: "*/5 * * * *"
+ # every 5 minutes
 
 jobs:
   check:
