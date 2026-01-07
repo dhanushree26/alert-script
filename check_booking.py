@@ -16,13 +16,16 @@ def send_alert(msg):
 def check_booking():
     r = requests.get(URL, timeout=15)
     soup = BeautifulSoup(r.text, "html.parser")
+    page_text = soup.get_text().lower()
 
-    if MOVIE.lower() in soup.get_text().lower():
-        send_alert(f"🎬 BOOKING OPEN!\n\n{MOVIE} tickets are LIVE on Karur Cinemas!")
-        return True
-    return False
+    if MOVIE.lower() in page_text:
+        send_alert(
+            f"🎬 BOOKING OPEN!\n\n{MOVIE} tickets are LIVE on Karur Cinemas!"
+        )
+    else:
+        # TEMPORARY TEST MESSAGE
+        send_alert(
+            f"❌ Test check:\n{MOVIE} booking NOT found yet."
+        )
 
-if check_booking():
-    print("Booking found")
-else:
-    print("Not yet")
+check_booking()
